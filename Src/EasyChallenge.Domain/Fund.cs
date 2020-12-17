@@ -5,7 +5,7 @@ using System;
 namespace EasyChallenge.Domain
 {
 
-    public class Funds : BaseInvestment
+    public class Fund : BaseInvestment
     {
 
         [JsonProperty("capitalInvestido")]

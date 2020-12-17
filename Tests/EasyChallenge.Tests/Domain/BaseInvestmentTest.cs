@@ -3,9 +3,9 @@ using EasyChallenge.Domain.Constants;
 using FluentAssertions;
 using Xunit;
 
-namespace EasyChallenge.Tests.Core
+namespace EasyChallenge.Tests.Domain
 {
-    public class BaseInvestmentTest : BaseTest
+    public class BaseInvestmentTest : BaseDataTest
     {
         [Theory]
         [MemberData(nameof(DataProfitabilityPositive))]
@@ -27,7 +27,7 @@ namespace EasyChallenge.Tests.Core
         }
 
         [Theory]
-        [MemberData(nameof(BaseTest.PurchaseAndDueDatesTo15Percent))]
+        [MemberData(nameof(BaseDataTest.PurchaseAndDueDatesTo15Percent))]
         public void Should_be_loss_15_percent_from_total_value<T>(T entity) where T : BaseInvestment
         {
             entity.RescueValue.Should().BeLessThan(entity.TotalValue);

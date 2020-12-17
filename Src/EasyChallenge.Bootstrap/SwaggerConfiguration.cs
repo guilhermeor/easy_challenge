@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using System.Linq;
 
 namespace EasyChallenge.Bootstrap
 {
@@ -20,7 +22,7 @@ namespace EasyChallenge.Bootstrap
             app.UseSwaggerUI(c =>
             {
                 c.DisplayRequestDuration();
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "EasyChallenge.API v1");
+                c.SwaggerEndpoint($"/swagger/v1/swagger.json", "EasyChallenge.API v1");
                 c.RoutePrefix = "docs";
             });
             return app;

@@ -2,9 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using OpenTracing;
-using OpenTracing.Propagation;
 using System;
-using System.Linq;
 using System.Net;
 
 namespace EasyChallenge.Bootstrap.Filters

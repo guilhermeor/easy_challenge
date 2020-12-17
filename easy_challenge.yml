@@ -1,0 +1,31 @@
+version: '3.4'
+services:
+  api:
+    build: .
+    networks:
+      - easy-network
+    ports:
+      - "8080:80"
+    depends_on:
+      - redis_easy
+      - jaeger_easy
+
+  jaeger_easy:
+    image: jaegertracing/all-in-one
+    ports:
+      - "6831:6831/udp"
+      - "5778:5778"
+      - "16686:16686"
+    networks:
+      - easy-network      
+
+  redis_easy:
+    image: redis:6-alpine
+    # ports:
+    #   - "6379:6379"
+    networks:
+      - easy-network
+
+networks:
+  easy-network:
+    driver: bridge

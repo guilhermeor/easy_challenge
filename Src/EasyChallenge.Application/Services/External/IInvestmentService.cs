@@ -3,7 +3,7 @@ using Refit;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace EasyChallenge.Application.Services
+namespace EasyChallenge.Application.Services.External
 {
     public interface IInvestmentService
     {

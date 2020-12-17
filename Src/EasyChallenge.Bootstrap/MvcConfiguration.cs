@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 
 namespace EasyChallenge.Bootstrap
 {
     public static class MvcConfiguration
     {
-        public static IApplicationBuilder Configure(this IApplicationBuilder app, IWebHostEnvironment env)
+        public static IApplicationBuilder Configure(this IApplicationBuilder app)
         {
             app.UseHttpsRedirection();
             app.UseRouting();

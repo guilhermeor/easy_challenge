@@ -1,14 +1,13 @@
 ﻿using EasyChallenge.API.Presenter;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EasyChallenge.API.Controllers
 {
     [ApiController]
+    [Produces("application/json")]
+    [ExcludeFromCodeCoverage]
     public class BaseController : Controller
     {
         protected readonly ISender _mediator;

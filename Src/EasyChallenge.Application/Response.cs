@@ -16,5 +16,8 @@ namespace EasyChallenge.Application
         public string ErrorMessage { get; set; }
         public T Result { get;}
         public HttpStatusCode StatusCode { get; set; } = HttpStatusCode.OK;
+
+        public static explicit operator Response<T>((string Message, Notification Notification, HttpStatusCode StatusCode) response) 
+            => new(response.Message, response.Notification, response.StatusCode);
     }
 }

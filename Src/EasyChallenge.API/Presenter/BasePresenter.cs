@@ -6,13 +6,8 @@ namespace EasyChallenge.API.Presenter
 {
     public class BasePresenter : IBasePresenter
     {
-        public IActionResult GetActionResult<T>(Response<T> response) where T : struct
-        {
-            if (response.Invalid)
-                return CreateErrorResult(response);
-
-            return new OkObjectResult(response.Result);
-        }
+        public IActionResult GetActionResult<T>(Response<T> response) where T : struct 
+            => response.Invalid ? CreateErrorResult(response) : new OkObjectResult(response.Result);
 
         private static IActionResult CreateErrorResult<T>(Response<T> response) where T : struct
         {

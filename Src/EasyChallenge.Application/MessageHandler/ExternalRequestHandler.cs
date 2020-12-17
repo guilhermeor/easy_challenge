@@ -16,7 +16,7 @@ namespace EasyChallenge.Application.MessageHandler
         {
             var response = await base.SendAsync(request, cancellationToken);
             var traceLogResponse = await response.Content.ReadAsStringAsync(cancellationToken);
-            _tracer.ActiveSpan.Log($"Response: {traceLogResponse}");
+            _tracer.ActiveSpan?.Log($"Response: {traceLogResponse}");
             return response;
         }
     }

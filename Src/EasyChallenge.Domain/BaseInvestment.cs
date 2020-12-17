@@ -10,8 +10,7 @@ namespace EasyChallenge.Domain
         public abstract decimal TotalValue { get; init; }
         public abstract DateTime DueDate { get; init; }
         public abstract DateTime PurchaseDate { get; init; }
-        [JsonProperty("iof")]
-        public float Iof { get; init; }
+
         [JsonProperty("nome")]
         public string Name { get; init; }
         public abstract decimal IR { get; }
@@ -19,6 +18,9 @@ namespace EasyChallenge.Domain
         {
             get
             {
+                if (DueDate.Date <= DateTime.Now)
+                    return TotalValue;
+
                 var totalSeconds = (DateTime.Now - PurchaseDate).TotalSeconds;
                 var percent = totalSeconds / (DueDate - PurchaseDate).TotalSeconds;
 
@@ -32,6 +34,5 @@ namespace EasyChallenge.Domain
             }
         }
         public decimal Profitability() => TotalValue - InvestedAmount;
-
     }
 }

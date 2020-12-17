@@ -44,8 +44,9 @@ namespace EasyChallenge.Bootstrap
 
         private static void RegisterJobs()
         {
-            RecurringJob.AddOrUpdate<UpdateCacheJob>("Update Cache", x => x.Update(), Cron.Daily(1), TimeZoneInfo.Local);
-            RecurringJob.AddOrUpdate<UpdateCacheJob>("Clear Cache", x => x.Clear(), Cron.Never, TimeZoneInfo.Local);
+            var midnightEveryDay = "0 0 0 ? * *";
+            RecurringJob.AddOrUpdate<UpdateCacheJob>("Update Cache", x => x.UpdateAsync(), midnightEveryDay, TimeZoneInfo.Local);
+            RecurringJob.AddOrUpdate<UpdateCacheJob>("Clear Cache", x => x.ClearAsync(), Cron.Never, TimeZoneInfo.Local);
         }
     }
 }

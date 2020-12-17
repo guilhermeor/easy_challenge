@@ -2,41 +2,38 @@ using EasyChallenge.API.Presenter;
 using EasyChallenge.Bootstrap;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System.IO.Compression;
 
 namespace EasyChallenge.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
-            services.AddMemoryCache();
             services.AddTransient<IBasePresenter, BasePresenter>();
+            services.AddResponseCompression();
+            services.Configure<BrotliCompressionProviderOptions>(options => options.Level = CompressionLevel.Fastest);
 
-            services.ConfigurationSummary(Configuration);
-
+            services.CacheConfigurationServices(Configuration);            
+            services.ConfigurationPorfotio(Configuration);
+            services.ConfigurationSummary();
             services.ConfigurationSwaggerServices();
             services.ConfigurationJaeger();
-
             services.JobConfigurationServices();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            app.Configure(env);
+            app.Configure();
             app.ConfigurationSwagger();
             app.ConfigurationHangfireDashboard();
         }
