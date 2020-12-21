@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.org/guilhermeor/easy_challenge.png)](https://travis-ci.org/guilhermeor/easy_challenge)
+
 # easy_challenge
 
 ## Tecnologias utilizadas: 
