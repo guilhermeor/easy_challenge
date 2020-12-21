@@ -25,7 +25,7 @@ Para acessar o swagger da api e o endpoint que lista os investimentos do portif�
 - [Swagger](http://3.140.162.51:8080/docs)
 - [Portfolio](http://3.140.162.51:8080/v1/portfolio)
 
-Também foi utilizado o hangfire para executar jobs de limpeza de cache update de cache. O Job de update está configurado através de uma expressão cron ("0 0 0 ? * *") para que seja executado todo dia "as 00:00. Contudo, o job de limpeza só será executado manualmente pela interface do hangfire.
+Também foi utilizado o hangfire para executar jobs de limpeza e update de cache. O Job de update está configurado através de uma expressão cron ("0 0 0 ? * *") para que seja executado todo dia "as 00:00. Contudo, o job de limpeza só será executado manualmente pela interface do hangfire.
 
 Os registros cacheados expiram no horário 00:00 e também são inseridos utilizando como parte da composição do nome da chave a data atual. Dessa forma adiciona-se outra proteção para que se utilize apenas dados cacheados do dia atual.
 
