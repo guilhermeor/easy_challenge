@@ -23,7 +23,7 @@ A aplicação está hospedada na AWS - Region de Ohio (us-east-2). Foi definido 
 
 Para acessar o swagger da api e o endpoint que lista os investimentos do portifólio, utilize o endereço com IP elástico: 
 - [Swagger](http://3.140.162.51:8080/docs)
-- [Portolio](http://3.140.162.51:8080/v1/portfolio)
+- [Portfolio](http://3.140.162.51:8080/v1/portfolio)
 
 Também foi utilizado o hangfire para executar jobs de limpeza de cache update de cache. O Job de update está configurado através de uma expressão cron ("0 0 0 ? * *") para que seja executado todo dia "as 00:00. Contudo, o job de limpeza só será executado manualmente pela interface do hangfire.
 
